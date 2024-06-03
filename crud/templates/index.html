@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Daftar Informasi</h1>
+<a href="{{ url_for('create') }}" class="btn btn-primary mb-3">Tambah Informasi</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Judul</th>
+            <th>Tanggal Dibuat</th>
+            <th>Aksi</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for informasi in informasis %}
+        <tr>
+            <td>{{ informasi.judul }}</td>
+            <td>{{ informasi.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</td>
+            <td>
+                <a href="{{ url_for('show', informasi_id=informasi.id) }}" class="btn btn-info">Lihat</a>
+                <a href="{{ url_for('edit', informasi_id=informasi.id) }}" class="btn btn-warning">Edit</a>
+                <form action="{{ url_for('delete', informasi_id=informasi.id) }}" method="POST" style="display:inline;">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
