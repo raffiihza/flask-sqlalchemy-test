@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Todo List</h1>
+            <form action="/add" method="POST">
+                <div class="field">
+                    <label class="label">New Task</label>
+                    <div class="control">
+                        <input class="input" type="text" name="task" placeholder="Enter new task">
+                    </div>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" type="submit">Add Task</button>
+                </div>
+            </form>
+            <hr>
+            <h2 class="subtitle">Tasks</h2>
+            <ul>
+                {% for todo in todos %}
+                    <li>
+                        <span class="{% if todo.completed %}has-text-grey-light{% endif %}">{{ todo.task }}</span>
+                        {% if not todo.completed %}
+                            <a class="button is-small is-success" href="/complete/{{ todo.id }}">Complete</a>
+                        {% endif %}
+                        <a class="button is-small is-info" href="/edit/{{ todo.id }}">Edit</a>
+                        <a class="button is-small is-danger" href="/delete/{{ todo.id }}">Delete</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+</body>
+</html>

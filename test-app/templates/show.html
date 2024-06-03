@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>{{ informasi.judul }}</h1>
+<p>{{ informasi.isi }}</p>
+<p><strong>Tanggal Dibuat:</strong> {{ informasi.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+<a href="{{ url_for('index') }}" class="btn btn-secondary">Kembali</a>
+{% endblock %}

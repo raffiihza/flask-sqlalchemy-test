@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css">
+</head>
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Edit Task</h1>
+            <form action="/edit/{{ todo.id }}" method="POST">
+                <div class="field">
+                    <label class="label">Task</label>
+                    <div class="control">
+                        <input class="input" type="text" name="task" value="{{ todo.task }}" required>
+                    </div>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" type="submit">Update Task</button>
+                </div>
+            </form>
+        </div>
+    </section>
+</body>
+</html>
